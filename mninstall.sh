@@ -66,7 +66,7 @@ createconf() {
         #TODO: Random generate the user and password
 
         message "Creating adevplus20.conf..."
-        MNPRIVKEY="6FBUPijSGWWDrhbVPDBEoRuJ67WjLDpTEiY1h4wAvexVZH3HnV6"
+        MNPRIVKEY="66M7PXr6q8LCQdafoAwoxa927T2jowafosA7vAYAPnRMw3BYX4a"
         CONFDIR=~/.adevplus20
         CONFILE=$CONFDIR/adevplus20.conf
         if [ ! -d "$CONFDIR" ]; then mkdir $CONFDIR; fi
@@ -75,7 +75,7 @@ createconf() {
         mnip=$(curl -s https://api.ipify.org)
         rpcuser=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
         rpcpass=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcallowip=127.0.0.1" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" > $CONFILE
+        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcallowip=127.0.0.1" "listen=1" "server=1" "daemon=1" > $CONFILE
 
         adevplus20d
         message "Wait 10 seconds for daemon to load..."
