@@ -88,7 +88,7 @@ createconf() {
         sleep 10s
         sudo rm $CONFILE
         message "Updating adevplus20.conf..."
-        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcport=5471" "rpcallowip=127.0.0.1" "externalip=$mnip:5472" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" "addnode=177.97.39.28" "addnode=179.177.14.57" "addnode=82.239.216.33" "addnode=187.40.209.150" "addnode=187.44.209.14" "addnode=46.234.130.173" > $CONFILE
+        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcport=5471" "rpcallowip=127.0.0.1" "externalip=$mnip:5472" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" "addnode=5.189.162.110:5472" "addnode=136.144.171.201:5472" "addnode=51.77.231.51:5472" "addnode=168.235.88.48:5472" "addnode=185.52.1.180:5472" "addnode=46.234.130.173" > $CONFILE
 
 }
 success() {
