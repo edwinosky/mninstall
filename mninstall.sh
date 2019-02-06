@@ -79,7 +79,7 @@ createconf() {
 
         adevplus20d
         message "Wait 10 seconds for daemon to load..."
-        sleep 20s
+        sleep 10s
         MNPRIVKEY=$(adevplus20-cli masternode genkey)
         adevplus20-cli stop
         message "wait 10 seconds for deamon to stop..."
