@@ -5,7 +5,8 @@ Shell script to install a AdevPlus2.0 Masternode on a Linux server running Ubunt
 
 # VPS installation
 ```
-wget -N https://github.com/edwinosky/mninstall/blob/master/mninstall.sh
+git clone https://github.com/edwinosky/mninstall.git
+cd mninstall
 bash mninstall.sh
 ```
 
