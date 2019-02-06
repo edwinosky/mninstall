@@ -1,0 +1,2 @@
+# mninstall
+Masternode Auto Install
