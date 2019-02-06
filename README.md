@@ -4,8 +4,10 @@ Masternode Auto Install
 Shell script to install a AdevPlus2.0 Masternode on a Linux server running Ubuntu 16.04
 
 VPS installation
+```
 wget -N https://github.com/edwinosky/mninstall/blob/master/mninstall.sh
 bash mninstall.sh
+```
 
 # Desktop wallet setup
 After the daemon is compiled and synchronized in the vps, you must configure the desktop wallet with the following steps:
@@ -14,6 +16,7 @@ After the daemon is compiled and synchronized in the vps, you must configure the
 2:) Go to RECEIVE and create a New Address: MN1
 
 3:) Send 26000 ADV2 to MN1. You need to send all 26000 coins in one single transaction.
+
 4:) Wait for 20 confirmations.
 
 5:) Go to Help -> "Debug Window - Console"
@@ -37,18 +40,24 @@ Save and close the file.
 11-a:) Select your MN and click Start Alias to start it.
 
 11-b:) Alternatively, open Debug Console and type:
+       ```
        masternode start-alias MN1
+       ```
        OR
+       ```
        startmasternode alias false MN1
+       ```
 
 Login to your VPS and check your masternode status by running the following command to confirm your MN is running:
 adevplus20-cli masternode status
 
 
 Usage:
+```
 adevplus20-cli masternode status
 adevplus20 getinfo
 adevplus20-cli mnsync status
+```
 
-## contact
+## Contact
 https://discord.gg/VWC8b7a
