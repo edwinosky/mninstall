@@ -2,8 +2,8 @@
 
 noflags() {
         echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
-    echo "Usage: test"
-    echo "Example: test"
+    echo "Usage: mninstall"
+    echo "Example: mninstall"
     echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
     exit 1
 }
@@ -73,9 +73,9 @@ createconf() {
         if [ $? -ne 0 ]; then error; fi
 
         mnip=$(curl -s https://api.ipify.org)
-        rpcuser=$(date +%s | sha256sum | base64 | head -c 10 ; echo)
-        rpcpass=$(openssl rand -base64 32)
-        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcallowip=127.0.0.1" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" "addnode=177.97.39.28" "addnode=179.177.14.57" "addnode=82.239.216.33" "addnode=187.40.209.150" "addnode=187.44.209.14" "addnode=46.234.130.173"> $CONFILE
+        rpcuser=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
+        rpcpass=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
+        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcallowip=127.0.0.1" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" > $CONFILE
 
         adevplus20d
         message "Wait 10 seconds for daemon to load..."
@@ -86,7 +86,7 @@ createconf() {
         sleep 10s
         sudo rm $CONFILE
         message "Updating adevplus20.conf..."
-        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcallowip=127.0.0.1" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" > $CONFILE
+        printf "%s\n" "rpcuser=$rpcuser" "rpcpassword=$rpcpass" "rpcport=5471" "rpcallowip=127.0.0.1" "externalip=$mnip:5472" "listen=1" "server=1" "daemon=1" "maxconnections=256" "masternode=1" "masternodeprivkey=$MNPRIVKEY" "addnode=177.97.39.28" "addnode=179.177.14.57" "addnode=82.239.216.33" "addnode=187.40.209.150" "addnode=187.44.209.14" "addnode=46.234.130.173" > $CONFILE
 
 }
 success() {
